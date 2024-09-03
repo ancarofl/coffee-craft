@@ -7,4 +7,8 @@ export default StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 	},
+	list: {
+		flexGrow: 1,
+		justifyContent: 'center',
+	},
 });

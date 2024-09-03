@@ -21,9 +21,21 @@ type CoffeeExtra = {
 	subselections: CoffeeExtraSubselection[];
 };
 
+type SelectedCoffeeExtra = {
+	extraId: string;
+	subselectionId: string;
+};
+
 type CoffeeData = {
 	_id: string;
 	types: CoffeeType[];
 	sizes: CoffeeSize[];
 	extras: CoffeeExtra[];
+};
+
+type CoffeeState = {
+	availableCoffeesData: CoffeeData | null;
+	typeId: string;
+	sizeId: string;
+	extras: SelectedCoffeeExtra[];
 };
