@@ -1,0 +1,11 @@
+{
+	"editor.insertSpaces": false,
+	"editor.tabSize": 4,
+	"editor.detectIndentation": false,
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.formatOnPaste": false,
+	"editor.formatOnType": false,
+	"editor.formatOnSave": true,
+	"editor.formatOnSaveMode": "file",
+	"files.autoSave": "onFocusChange"
+}
