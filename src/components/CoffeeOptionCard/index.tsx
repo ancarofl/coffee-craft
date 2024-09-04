@@ -3,6 +3,7 @@ import { Pressable, Text, View } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { colors } from '../../constants/colors';
 import { addExtra, removeExtra } from '../../store/slices/coffeeSlice';
+import { extractExtraNameFromAPIResponse } from '../../utils/utils';
 import styles from './styles';
 
 type CoffeeOptionCardProps = {
@@ -14,7 +15,7 @@ type CoffeeOptionCardProps = {
 	backgroundColor?: string;
 	textColor?: string;
 };
-// TODO: clean this
+
 export const CoffeeOptionCard = ({
 	text,
 	id,
@@ -39,15 +40,15 @@ export const CoffeeOptionCard = ({
 
 	return (
 		<Pressable style={[styles.container, { backgroundColor }]} onPress={onPress}>
-			<Text style={[styles.text, { color: textColor }]}>{text}</Text>
+			<Text style={[{ color: textColor }]}>{extractExtraNameFromAPIResponse(text)}</Text>
 			{isToggled && subselections && (
-				<View>
+				<View style={styles.subselectionContainer}>
 					{subselections.map((subselection) => (
 						<Pressable
+							style={styles.subselection}
 							key={subselection._id}
-							style={styles.subselectionContainer}
 							onPress={() => handleOnPress(subselection._id)}>
-							<Text style={[styles.text2, { color: textColor }]}>{subselection.name}</Text>
+							<Text style={[{ color: textColor }]}>{subselection.name}</Text>
 							<View
 								style={[
 									styles.circle,

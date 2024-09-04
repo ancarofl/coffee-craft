@@ -33,11 +33,12 @@ export const SelectCoffeeSize = () => {
 
 	return (
 		<SafeAreaView style={styles.container}>
-			<Text>Select your size</Text>
+			<Text style={styles.title}>Select your size</Text>
 			<FlatList
 				data={sizesAvailableForSelectedType}
 				renderItem={renderItem}
 				keyExtractor={(item) => item._id}
+				style={styles.list}
 			/>
 		</SafeAreaView>
 	);

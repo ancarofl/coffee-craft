@@ -6,18 +6,23 @@ import { sizes } from '../../constants/sizes';
 import { RootStackParamList } from '../../types/navigation';
 import styles from './styles';
 
-interface CustomHeaderProps {
+type CustomHeaderProps = {
 	title: string;
 	navigation: StackNavigationProp<RootStackParamList>;
 	onBackPress?: () => void;
-}
+};
 
 export const CustomHeader = ({ title, navigation }: CustomHeaderProps) => {
 	return (
 		<View style={styles.header}>
 			{navigation.canGoBack() && (
 				<Pressable onPress={() => navigation.goBack()}>
-					<Feather name="chevron-left" size={sizes.iconSmall} color={colors.black} />
+					<Feather
+						name="chevron-left"
+						size={sizes.iconSmall}
+						color={colors.black}
+						style={styles.chevron}
+					/>
 				</Pressable>
 			)}
 			<Text style={styles.title}>{title}</Text>

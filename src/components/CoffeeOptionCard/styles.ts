@@ -1,34 +1,35 @@
 import { StyleSheet } from 'react-native';
 import { colors } from '../../constants/colors';
+import { sizes } from '../../constants/sizes';
 
 export default StyleSheet.create({
 	container: {
-		padding: 16,
-		marginVertical: 8,
-		borderRadius: 8,
-		alignItems: 'center',
+		alignItems: 'flex-start',
+		borderRadius: sizes.viewBorderRadiusDefault,
+		marginVertical: sizes.paddingOption / 2,
+		padding: sizes.paddingOption,
 		width: '100%',
 	},
-	text: {
-		fontSize: 16,
-	},
 	subselectionContainer: {
-		flexDirection: 'row',
-		alignItems: 'center',
-		justifyContent: 'space-between',
-		marginBottom: 8,
+		marginBottom: sizes.paddingOption / 2,
+		width: '100%',
 	},
-	text2: {
-		fontSize: 16,
-		marginRight: 8,
+	subselection: {
+		backgroundColor: colors.secondaryBackgroundColor,
+		borderRadius: sizes.viewBorderRadiusDefault,
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+		marginTop: sizes.paddingDefault,
+		padding: sizes.paddingDefault / 2,
+		width: '100%',
 	},
 	circle: {
-		width: 24,
-		height: 24,
+		borderColor: colors.primaryTextColor,
 		borderRadius: 12,
 		borderWidth: 2,
-		borderColor: colors.primaryTextColor,
 		backgroundColor: 'transparent',
+		height: 24,
+		width: 24,
 	},
 	checkedCircle: {
 		backgroundColor: colors.primaryTextColor,

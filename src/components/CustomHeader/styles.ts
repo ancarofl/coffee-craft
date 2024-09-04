@@ -9,9 +9,14 @@ export default StyleSheet.create({
 		borderBottomWidth: 0,
 		flexDirection: 'row',
 		justifyContent: 'flex-start',
+		paddingHorizontal: sizes.paddingDefault,
+		paddingTop: sizes.paddingDefault,
 	},
 	title: {
 		fontSize: sizes.fontMedium,
 		fontWeight: 'bold',
+	},
+	chevron: {
+		marginLeft: -sizes.paddingDefault / 3,
 	},
 });

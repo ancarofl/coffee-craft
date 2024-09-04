@@ -49,11 +49,12 @@ export const SelectCoffeeExtras = () => {
 
 	return (
 		<SafeAreaView style={styles.container}>
-			<Text>Select your extras</Text>
+			<Text style={styles.title}>Select your extras</Text>
 			<FlatList
 				data={extrasAvailableForSelectedType}
 				renderItem={renderItem}
 				keyExtractor={(item) => item._id}
+				style={styles.list}
 			/>
 			<PrimaryButton
 				text={`Continue with ${extras.length} extra(s).`}

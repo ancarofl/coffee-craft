@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useDispatch } from 'react-redux';
+import HomeIcon from '../../../assets/icons/HomeIcon';
 import { COFFEE_MACHINE_ID } from '../../config/api';
 import { useGetCoffeeDataQuery } from '../../store/slices/coffeeApiSlice';
 import { setInitialCoffeeData } from '../../store/slices/coffeeSlice';
@@ -27,10 +28,10 @@ export const Home = () => {
 	if (error) return <Text>Error: {error.toString()}</Text>;
 	return (
 		<SafeAreaView style={styles.container}>
-			<Text>COFEEE MACHINE</Text>
+			<Text style={styles.title}>Tap the machine to start</Text>
 			<Pressable onPress={() => navigation.navigate('SelectCoffeeType')}>
 				<View>
-					<Text>START</Text>
+					<HomeIcon style={styles.homeIcon} />
 				</View>
 			</Pressable>
 		</SafeAreaView>
