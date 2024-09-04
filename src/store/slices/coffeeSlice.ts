@@ -11,27 +11,34 @@ const coffeeSlice = createSlice({
 	name: 'coffee',
 	initialState,
 	reducers: {
-		setInitialCoffeeData: (state, action) => {
+		setInitialCoffeeData: (state, action: PayloadAction<CoffeeData>) => {
 			state.availableCoffeesData = action.payload;
 		},
-		setType: (state, action: PayloadAction<string>) => {
+		setTypeId: (state, action: PayloadAction<string>) => {
 			state.typeId = action.payload;
 		},
-		setSize: (state, action: PayloadAction<string>) => {
+		setSizeId: (state, action: PayloadAction<string>) => {
 			state.sizeId = action.payload;
 		},
 		addExtra: (state, action: PayloadAction<SelectedCoffeeExtra>) => {
-			// TODO: implement
 			const { extraId, subselectionId } = action.payload;
-			console.log('Coffee slice add extra: ', extraId, ' and ', subselectionId);
+
+			// If the extra is already added to the coffee, update its subselection to the newly selected one. Otherwise add the extra
+			const existingExtra = state.extras.find((extra) => extra.extraId === extraId);
+			existingExtra
+				? (existingExtra.subselectionId = subselectionId)
+				: state.extras.push({ extraId, subselectionId });
 		},
 		removeExtra: (state, action: PayloadAction<{ extraId: string; subselectionId: string }>) => {
-			// TODO: implement
 			const { extraId, subselectionId } = action.payload;
-			console.log('Coffee slice remove extra: ', extraId, ' and ', subselectionId);
+
+			state.extras = state.extras.filter(
+				(extra) => !(extra.extraId === extraId && extra.subselectionId === subselectionId)
+			);
 		},
 	},
 });
 
-export const { setType, setSize, addExtra, removeExtra, setInitialCoffeeData } = coffeeSlice.actions;
+export const { setTypeId, setSizeId, addExtra, removeExtra, setInitialCoffeeData } =
+	coffeeSlice.actions;
 export default coffeeSlice.reducer;
