@@ -1,6 +1,9 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { FlatList, Text, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
+import LargeIcon from '../../../assets/icons/LargeIcon';
+import TallIcon from '../../../assets/icons/TallIcon';
+import VentiIcon from '../../../assets/icons/VentiIcon';
 import { CoffeeOptionCard } from '../../components/CoffeeOptionCard';
 import theme from '../../constants/theme';
 import { setSizeId } from '../../store/slices/coffeeSlice';
@@ -26,8 +29,19 @@ export const SelectCoffeeSize = () => {
 		navigation.navigate('SelectCoffeeExtras');
 	};
 
+	const sizeIconMap: { [key: string]: JSX.Element } = {
+		Venti: <VentiIcon />,
+		Large: <LargeIcon />,
+		Tall: <TallIcon />,
+	};
+
 	const renderItem = ({ item }: { item: CoffeeSize }) => (
-		<CoffeeOptionCard key={item._id} text={item.name} onPress={() => handleSelectSize(item._id)} />
+		<CoffeeOptionCard
+			key={item._id}
+			text={item.name}
+			icon={sizeIconMap[item.name]}
+			onPress={() => handleSelectSize(item._id)}
+		/>
 	);
 
 	return (

@@ -34,4 +34,11 @@ export default StyleSheet.create({
 	checkedCircle: {
 		backgroundColor: colors.primaryTextColor,
 	},
+	textContainer: {
+		flexDirection: 'row',
+		alignItems: 'center',
+	},
+	iconContainer: {
+		marginRight: sizes.paddingDefault,
+	},
 });

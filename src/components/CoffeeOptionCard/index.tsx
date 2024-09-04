@@ -16,6 +16,7 @@ type CoffeeOptionCardProps = {
 	isSubselectionEditable?: boolean;
 	backgroundColor?: string;
 	textColor?: string;
+	icon?: JSX.Element;
 };
 
 export const CoffeeOptionCard = ({
@@ -28,6 +29,7 @@ export const CoffeeOptionCard = ({
 	isSubselectionEditable = true,
 	backgroundColor = colors.primaryBackgroundColor,
 	textColor = colors.primaryTextColor,
+	icon,
 }: CoffeeOptionCardProps) => {
 	const [selectedSubselectionId, setSelectedSubselectionId] = useState<string | null>(
 		preselectedSubselectionId || null
@@ -48,7 +50,10 @@ export const CoffeeOptionCard = ({
 
 	return (
 		<Pressable style={[styles.container, { backgroundColor }]} onPress={onPress}>
-			<Text style={[{ color: textColor }]}>{extractExtraNameFromAPIResponse(text)}</Text>
+			<View style={styles.textContainer}>
+				{icon && <View style={styles.iconContainer}>{icon}</View>}
+				<Text style={[{ color: textColor }]}>{extractExtraNameFromAPIResponse(text)}</Text>
+			</View>
 			{isToggled && subselections && (
 				<View style={styles.subselectionContainer}>
 					{subselections.map((subselection) => (

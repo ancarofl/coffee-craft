@@ -1,6 +1,9 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { FlatList, Text, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
+import CoffeeType1Icon from '../../../assets/icons/CoffeeType1Icon';
+import CoffeeType2Icon from '../../../assets/icons/CoffeeType2Icon';
+import CoffeeType3Icon from '../../../assets/icons/CoffeeType3Icon';
 import { CoffeeOptionCard } from '../../components/CoffeeOptionCard';
 import theme from '../../constants/theme';
 import { setTypeId } from '../../store/slices/coffeeSlice';
@@ -19,9 +22,24 @@ export const SelectCoffeeType = () => {
 		navigation.navigate('SelectCoffeeSize');
 	};
 
-	const renderItem = ({ item }: { item: CoffeeSize }) => (
-		<CoffeeOptionCard key={item._id} text={item.name} onPress={() => handleSelectType(item._id)} />
-	);
+	const getRandomCoffeeTypeIcon = () => {
+		const icons = [CoffeeType1Icon, CoffeeType2Icon, CoffeeType3Icon];
+		const randomIndex = Math.floor(Math.random() * icons.length);
+		return icons[randomIndex];
+	};
+
+	const renderItem = ({ item }: { item: CoffeeSize }) => {
+		const RandomIcon = getRandomCoffeeTypeIcon();
+
+		return (
+			<CoffeeOptionCard
+				icon={<RandomIcon />}
+				key={item._id}
+				text={item.name}
+				onPress={() => handleSelectType(item._id)}
+			/>
+		);
+	};
 
 	return (
 		<View style={theme.container}>
