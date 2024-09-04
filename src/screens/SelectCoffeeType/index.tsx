@@ -1,9 +1,8 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import React from 'react';
 import { FlatList, Text, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { CoffeeOptionCard } from '../../components/CoffeeOptionCard';
-import { setType } from '../../store/slices/coffeeSlice';
+import { setTypeId } from '../../store/slices/coffeeSlice';
 import { RootState } from '../../store/store';
 import { RootStackParamList } from '../../types/navigation';
 import styles from './styles';
@@ -16,7 +15,7 @@ export const SelectCoffeeType = () => {
 	const coffeeData = useSelector((state: RootState) => state.coffee.availableCoffeesData);
 
 	const handleSelectType = (type: string) => {
-		dispatch(setType(type));
+		dispatch(setTypeId(type));
 		navigation.navigate('SelectCoffeeSize');
 	};
 
@@ -31,7 +30,6 @@ export const SelectCoffeeType = () => {
 				data={coffeeData?.types}
 				renderItem={renderItem}
 				keyExtractor={(item) => item._id}
-				contentContainerStyle={styles.list}
 			/>
 		</View>
 	);
