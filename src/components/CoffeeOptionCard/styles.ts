@@ -14,6 +14,7 @@ export default StyleSheet.create({
 		width: '100%',
 	},
 	subselection: {
+		alignItems: 'center',
 		backgroundColor: colors.secondaryBackgroundColor,
 		borderRadius: sizes.viewBorderRadiusDefault,
 		flexDirection: 'row',
