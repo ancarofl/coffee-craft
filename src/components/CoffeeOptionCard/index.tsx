@@ -12,6 +12,8 @@ type CoffeeOptionCardProps = {
 	onPress?: () => void;
 	subselections?: CoffeeExtraSubselection[] | null;
 	isToggled?: boolean;
+	preselectedSubselectionId?: string;
+	isSubselectionEditable?: boolean;
 	backgroundColor?: string;
 	textColor?: string;
 };
@@ -22,14 +24,20 @@ export const CoffeeOptionCard = ({
 	onPress,
 	subselections,
 	isToggled = false,
+	preselectedSubselectionId,
+	isSubselectionEditable = true,
 	backgroundColor = colors.primaryBackgroundColor,
 	textColor = colors.primaryTextColor,
 }: CoffeeOptionCardProps) => {
-	const [selectedSubselectionId, setSelectedSubselectionId] = useState<string | null>(null);
+	const [selectedSubselectionId, setSelectedSubselectionId] = useState<string | null>(
+		preselectedSubselectionId || null
+	);
 
 	const dispatch = useDispatch();
 
 	const handleOnPress = (subselectionId: string) => {
+		if (!isSubselectionEditable) return;
+
 		const newSelectionId = selectedSubselectionId === subselectionId ? '' : subselectionId;
 		setSelectedSubselectionId(newSelectionId);
 

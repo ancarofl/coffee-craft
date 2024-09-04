@@ -1,16 +1,16 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { Text, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { useSelector } from 'react-redux';
+import { CoffeeOptionCard } from '../../components/CoffeeOptionCard';
 import { PrimaryButton } from '../../components/PrimaryButton';
+import theme from '../../constants/theme';
 import { RootState } from '../../store/store';
 import { RootStackParamList } from '../../types/navigation';
-import { extractExtraNameFromAPIResponse } from '../../utils/utils';
 import styles from './styles';
 
 type ViewOrderScreenNavigationProp = NavigationProp<RootStackParamList, 'SelectCoffeeSize'>;
-// TODO: clean this
+
 export const ViewOrder = () => {
 	const navigation = useNavigation<ViewOrderScreenNavigationProp>();
 	const { typeId, sizeId, extras, availableCoffeesData } = useSelector(
@@ -25,34 +25,36 @@ export const ViewOrder = () => {
 	};
 
 	return (
-		<SafeAreaView style={styles.container}>
-			<Text>Overview</Text>
+		<View style={[theme.container, styles.container]}>
+			<View style={styles.optionsContainer}>
+				<Text style={theme.title}>Overview</Text>
+				<CoffeeOptionCard id={selectedType?._id} text={selectedType?.name || ''}></CoffeeOptionCard>
+				<CoffeeOptionCard id={selectedSize?._id} text={selectedSize?.name || ''}></CoffeeOptionCard>
 
-			<Text style={styles.option}>{selectedType?.name || 'None'}</Text>
+				{extras.length > 0 ? (
+					extras.map((extra) => {
+						const extraObject = availableCoffeesData?.extras.find((e) => e._id === extra.extraId);
+						const subselectionObject = extraObject?.subselections.find(
+							(sub) => sub._id === extra.subselectionId
+						);
+						const subselections = subselectionObject ? [subselectionObject] : [];
 
-			<Text style={styles.option}>{selectedSize?.name || 'None'}</Text>
-
-			{extras.length > 0 ? (
-				extras.map((extra) => {
-					const extraDetail = availableCoffeesData?.extras.find((e) => e._id === extra.extraId);
-					const subselectionDetail = extraDetail?.subselections.find(
-						(sub) => sub._id === extra.subselectionId
-					);
-
-					return (
-						<View key={extra.extraId} style={styles.option}>
-							<Text>{extractExtraNameFromAPIResponse(extraDetail?.name || '')} </Text>
-							<Text>{subselectionDetail?.name || 'None'}</Text>
-						</View>
-					);
-				})
-			) : (
-				<View>
+						return (
+							<CoffeeOptionCard
+								key={extraObject?._id}
+								isToggled={true}
+								subselections={subselections.length > 0 ? subselections : null}
+								preselectedSubselectionId={subselectionObject?._id}
+								isSubselectionEditable={false}
+								text={extraObject?.name || ''}></CoffeeOptionCard>
+						);
+					})
+				) : (
 					<PrimaryButton text={'No extras added. Add now?'} onPress={() => handleOnPress()} />
-				</View>
-			)}
+				)}
+			</View>
 
 			<PrimaryButton text={'Brew your coffee'}></PrimaryButton>
-		</SafeAreaView>
+		</View>
 	);
 };

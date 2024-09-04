@@ -4,19 +4,22 @@ import { sizes } from '../../constants/sizes';
 
 export default StyleSheet.create({
 	container: {
-		flex: 1,
-		padding: 16,
-		//backgroundColor: colors.primaryBackgroundColor,
-		//borderWidth: 2,
-		//borderColor: 'red',
+		justifyContent: 'space-between',
+		width: '100%',
 	},
-
+	optionsContainer: {
+		borderRadius: sizes.viewBorderRadiusDefault,
+		width: '100%',
+	},
 	option: {
 		backgroundColor: colors.primaryBackgroundColor,
-		padding: 16,
-		marginVertical: 8,
 		borderRadius: sizes.viewBorderRadiusDefault,
-		alignItems: 'center',
+		color: colors.white,
+		marginVertical: sizes.paddingOption / 2,
+		padding: sizes.paddingOption,
 		width: '100%',
+	},
+	text: {
+		color: colors.white,
 	},
 });
