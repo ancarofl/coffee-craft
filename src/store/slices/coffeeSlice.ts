@@ -36,9 +36,14 @@ const coffeeSlice = createSlice({
 				(extra) => !(extra.extraId === extraId && extra.subselectionId === subselectionId)
 			);
 		},
+		reset: (state) => {
+			state.typeId = '';
+			state.sizeId = '';
+			state.extras = [];
+		},
 	},
 });
 
-export const { setTypeId, setSizeId, addExtra, removeExtra, setInitialCoffeeData } =
+export const { setTypeId, setSizeId, addExtra, removeExtra, setInitialCoffeeData, reset } =
 	coffeeSlice.actions;
 export default coffeeSlice.reducer;
