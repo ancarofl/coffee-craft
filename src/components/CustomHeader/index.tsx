@@ -1,6 +1,5 @@
 import { Feather } from '@expo/vector-icons';
 import { StackNavigationProp } from '@react-navigation/stack';
-import React from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { colors } from '../../constants/colors';
 import { sizes } from '../../constants/sizes';
