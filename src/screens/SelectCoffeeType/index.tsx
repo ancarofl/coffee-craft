@@ -19,7 +19,7 @@ export const SelectCoffeeType = () => {
 		navigation.navigate('SelectCoffeeSize');
 	};
 
-	const renderItem = ({ item }: { item: { _id: string; name: string } }) => (
+	const renderItem = ({ item }: { item: CoffeeSize }) => (
 		<CoffeeOptionCard key={item._id} text={item.name} onPress={() => handleSelectType(item._id)} />
 	);
 

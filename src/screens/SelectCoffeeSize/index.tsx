@@ -17,21 +17,27 @@ export const SelectCoffeeSize = () => {
 	const coffeeTypeId = useSelector((state: RootState) => state.coffee.typeId);
 
 	const selectedType = coffeeData?.types.find((type) => type._id === coffeeTypeId);
-	const filteredSizes = coffeeData?.sizes.filter((size) => selectedType?.sizes.includes(size._id));
+	const sizesAvailableForSelectedType = coffeeData?.sizes.filter((size) =>
+		selectedType?.sizes.includes(size._id)
+	);
 
 	const handleSelectSize = (size: string) => {
 		dispatch(setSizeId(size));
 		navigation.navigate('SelectCoffeeExtras');
 	};
 
-	const renderItem = ({ item }: { item: { _id: string; name: string } }) => (
+	const renderItem = ({ item }: { item: CoffeeSize }) => (
 		<CoffeeOptionCard key={item._id} text={item.name} onPress={() => handleSelectSize(item._id)} />
 	);
 
 	return (
 		<View style={styles.container}>
 			<Text>Select your size</Text>
-			<FlatList data={filteredSizes} renderItem={renderItem} keyExtractor={(item) => item._id} />
+			<FlatList
+				data={sizesAvailableForSelectedType}
+				renderItem={renderItem}
+				keyExtractor={(item) => item._id}
+			/>
 		</View>
 	);
 };

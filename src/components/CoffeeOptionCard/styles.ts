@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { colors } from '../../constants/colors';
 
 export default StyleSheet.create({
 	container: {
@@ -10,5 +11,26 @@ export default StyleSheet.create({
 	},
 	text: {
 		fontSize: 16,
+	},
+	subselectionContainer: {
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'space-between',
+		marginBottom: 8,
+	},
+	text2: {
+		fontSize: 16,
+		marginRight: 8,
+	},
+	circle: {
+		width: 24,
+		height: 24,
+		borderRadius: 12,
+		borderWidth: 2,
+		borderColor: colors.primaryTextColor,
+		backgroundColor: 'transparent',
+	},
+	checkedCircle: {
+		backgroundColor: colors.primaryTextColor,
 	},
 });
