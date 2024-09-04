@@ -1,6 +1,7 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
-import { FlatList, Text, View } from 'react-native';
+import { FlatList, Text } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useSelector } from 'react-redux';
 import { CoffeeOptionCard } from '../../components/CoffeeOptionCard';
 import { PrimaryButton } from '../../components/PrimaryButton';
@@ -47,7 +48,7 @@ export const SelectCoffeeExtras = () => {
 	);
 
 	return (
-		<View style={styles.container}>
+		<SafeAreaView style={styles.container}>
 			<Text>Select your extras</Text>
 			<FlatList
 				data={extrasAvailableForSelectedType}
@@ -57,6 +58,6 @@ export const SelectCoffeeExtras = () => {
 			<PrimaryButton
 				text={`Continue with ${extras.length} extra(s).`}
 				onPress={() => navigation.navigate('ViewOrder')}></PrimaryButton>
-		</View>
+		</SafeAreaView>
 	);
 };

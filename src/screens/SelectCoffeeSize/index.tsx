@@ -1,5 +1,6 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import { FlatList, Text, View } from 'react-native';
+import { FlatList, Text } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useDispatch, useSelector } from 'react-redux';
 import { CoffeeOptionCard } from '../../components/CoffeeOptionCard';
 import { setSizeId } from '../../store/slices/coffeeSlice';
@@ -31,13 +32,13 @@ export const SelectCoffeeSize = () => {
 	);
 
 	return (
-		<View style={styles.container}>
+		<SafeAreaView style={styles.container}>
 			<Text>Select your size</Text>
 			<FlatList
 				data={sizesAvailableForSelectedType}
 				renderItem={renderItem}
 				keyExtractor={(item) => item._id}
 			/>
-		</View>
+		</SafeAreaView>
 	);
 };

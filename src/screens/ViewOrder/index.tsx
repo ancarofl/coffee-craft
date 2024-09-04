@@ -1,6 +1,7 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useSelector } from 'react-redux';
 import { PrimaryButton } from '../../components/PrimaryButton';
 import { RootState } from '../../store/store';
@@ -24,7 +25,7 @@ export const ViewOrder = () => {
 	};
 
 	return (
-		<View style={styles.container}>
+		<SafeAreaView style={styles.container}>
 			<Text>Overview</Text>
 
 			<Text style={styles.option}>{selectedType?.name || 'None'}</Text>
@@ -52,6 +53,6 @@ export const ViewOrder = () => {
 			)}
 
 			<PrimaryButton text={'Brew your coffee'}></PrimaryButton>
-		</View>
+		</SafeAreaView>
 	);
 };

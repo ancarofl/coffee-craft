@@ -1,6 +1,7 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import React, { useEffect } from 'react';
 import { Pressable, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useDispatch } from 'react-redux';
 import { COFFEE_MACHINE_ID } from '../../config/api';
 import { useGetCoffeeDataQuery } from '../../store/slices/coffeeApiSlice';
@@ -25,13 +26,13 @@ export const Home = () => {
 	if (isLoading) return <Text>Loading...</Text>;
 	if (error) return <Text>Error: {error.toString()}</Text>;
 	return (
-		<View style={styles.container}>
+		<SafeAreaView style={styles.container}>
 			<Text>COFEEE MACHINE</Text>
 			<Pressable onPress={() => navigation.navigate('SelectCoffeeType')}>
 				<View>
 					<Text>START</Text>
 				</View>
 			</Pressable>
-		</View>
+		</SafeAreaView>
 	);
 };
