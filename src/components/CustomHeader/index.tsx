@@ -1,6 +1,7 @@
 import { Feather } from '@expo/vector-icons';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { Pressable, Text, View } from 'react-native';
+import { Pressable, Text } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { colors } from '../../constants/colors';
 import { sizes } from '../../constants/sizes';
 import { RootStackParamList } from '../../types/navigation';
@@ -14,7 +15,7 @@ type CustomHeaderProps = {
 
 export const CustomHeader = ({ title, navigation }: CustomHeaderProps) => {
 	return (
-		<View style={styles.header}>
+		<SafeAreaView style={styles.header}>
 			{navigation.canGoBack() && (
 				<Pressable onPress={() => navigation.goBack()}>
 					<Feather
@@ -26,6 +27,6 @@ export const CustomHeader = ({ title, navigation }: CustomHeaderProps) => {
 				</Pressable>
 			)}
 			<Text style={styles.title}>{title}</Text>
-		</View>
+		</SafeAreaView>
 	);
 };

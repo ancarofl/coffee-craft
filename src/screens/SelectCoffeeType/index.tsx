@@ -1,6 +1,5 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import { FlatList, Text } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { FlatList, Text, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { CoffeeOptionCard } from '../../components/CoffeeOptionCard';
 import theme from '../../constants/theme';
@@ -25,7 +24,7 @@ export const SelectCoffeeType = () => {
 	);
 
 	return (
-		<SafeAreaView style={theme.safeAreaContainer}>
+		<View style={theme.container}>
 			<Text style={theme.title}>Select your style</Text>
 			<FlatList
 				data={coffeeData?.types}
@@ -33,6 +32,6 @@ export const SelectCoffeeType = () => {
 				keyExtractor={(item) => item._id}
 				style={theme.list}
 			/>
-		</SafeAreaView>
+		</View>
 	);
 };

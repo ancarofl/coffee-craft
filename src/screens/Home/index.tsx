@@ -1,7 +1,6 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import React, { useEffect } from 'react';
 import { Pressable, Text, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { useDispatch } from 'react-redux';
 import HomeIcon from '../../../assets/icons/HomeIcon';
 import { COFFEE_MACHINE_ID } from '../../config/api';
@@ -28,13 +27,13 @@ export const Home = () => {
 	if (isLoading) return <Text>Loading...</Text>;
 	if (error) return <Text>Error: {error.toString()}</Text>;
 	return (
-		<SafeAreaView style={theme.safeAreaContainer}>
+		<View style={theme.container}>
 			<Text style={theme.title}>Tap the machine to start</Text>
 			<Pressable onPress={() => navigation.navigate('SelectCoffeeType')}>
 				<View>
 					<HomeIcon style={styles.homeIcon} />
 				</View>
 			</Pressable>
-		</SafeAreaView>
+		</View>
 	);
 };

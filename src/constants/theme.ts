@@ -4,7 +4,7 @@ import { colors } from './colors';
 import { sizes } from './sizes';
 
 export default StyleSheet.create({
-	safeAreaContainer: {
+	container: {
 		alignItems: 'flex-start',
 		backgroundColor: colors.white,
 		flex: 1,

@@ -11,7 +11,6 @@ export default StyleSheet.create({
 		width: '100%',
 	},
 	subselectionContainer: {
-		marginBottom: sizes.paddingOption / 2,
 		width: '100%',
 	},
 	subselection: {
