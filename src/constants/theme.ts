@@ -1,12 +1,14 @@
 import { StyleSheet } from 'react-native';
-import { colors } from '../../constants/colors';
-import { sizes } from '../../constants/sizes';
+import { colors } from './colors';
+
+import { sizes } from './sizes';
 
 export default StyleSheet.create({
-	container: {
+	safeAreaContainer: {
 		alignItems: 'flex-start',
 		backgroundColor: colors.white,
 		flex: 1,
+		fontSize: sizes.fontSmall,
 		paddingBottom: sizes.paddingDefault,
 		paddingHorizontal: sizes.paddingDefault,
 	},

@@ -5,9 +5,9 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useSelector } from 'react-redux';
 import { CoffeeOptionCard } from '../../components/CoffeeOptionCard';
 import { PrimaryButton } from '../../components/PrimaryButton';
+import theme from '../../constants/theme';
 import { RootState } from '../../store/store';
 import { RootStackParamList } from '../../types/navigation';
-import styles from './styles';
 
 type SelectCoffeeExtrasScreenNavigationProp = NavigationProp<
 	RootStackParamList,
@@ -48,13 +48,13 @@ export const SelectCoffeeExtras = () => {
 	);
 
 	return (
-		<SafeAreaView style={styles.container}>
-			<Text style={styles.title}>Select your extras</Text>
+		<SafeAreaView style={theme.safeAreaContainer}>
+			<Text style={theme.title}>Select your extras</Text>
 			<FlatList
 				data={extrasAvailableForSelectedType}
 				renderItem={renderItem}
 				keyExtractor={(item) => item._id}
-				style={styles.list}
+				style={theme.list}
 			/>
 			<PrimaryButton
 				text={`Continue with ${extras.length} extra(s).`}

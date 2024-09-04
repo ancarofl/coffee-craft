@@ -3,13 +3,14 @@ import { sizes } from '../../constants/sizes';
 
 export default StyleSheet.create({
 	container: {
-		padding: 16,
-		marginVertical: 8,
+		alignItems: 'flex-start',
 		borderRadius: sizes.viewBorderRadiusDefault,
-		alignItems: 'center',
+		marginVertical: sizes.paddingOption / 2,
+		padding: sizes.paddingOption,
 		width: '100%',
 	},
 	text: {
-		fontSize: 16,
+		fontSize: sizes.fontMedium,
+		fontWeight: 500,
 	},
 });

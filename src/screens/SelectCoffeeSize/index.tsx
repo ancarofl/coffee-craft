@@ -3,10 +3,10 @@ import { FlatList, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useDispatch, useSelector } from 'react-redux';
 import { CoffeeOptionCard } from '../../components/CoffeeOptionCard';
+import theme from '../../constants/theme';
 import { setSizeId } from '../../store/slices/coffeeSlice';
 import { RootState } from '../../store/store';
 import { RootStackParamList } from '../../types/navigation';
-import styles from './styles';
 
 type SelectCoffeeSizeScreenNavigationProp = NavigationProp<RootStackParamList, 'SelectCoffeeSize'>;
 
@@ -32,13 +32,13 @@ export const SelectCoffeeSize = () => {
 	);
 
 	return (
-		<SafeAreaView style={styles.container}>
-			<Text style={styles.title}>Select your size</Text>
+		<SafeAreaView style={theme.safeAreaContainer}>
+			<Text style={theme.title}>Select your size</Text>
 			<FlatList
 				data={sizesAvailableForSelectedType}
 				renderItem={renderItem}
 				keyExtractor={(item) => item._id}
-				style={styles.list}
+				style={theme.list}
 			/>
 		</SafeAreaView>
 	);
